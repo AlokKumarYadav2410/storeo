@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState } from 'react';
-import { NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
 
   const [menuToggle, setMenuToggle] = useState(false);
 
@@ -16,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div className='flex justify-between px-4 sm:px-8 backdrop-blur-lg fixed left-1/2 -translate-x-1/2 top-0 h-16 w-full max-w-500 transition-all duration-300 items-center z-10 bg-[#A9A09A]/80'>
-      <h1 className='text-white text-xl font-light tracking-wider animate-bounce bg-black px-4 py-2 rounded-lg'>Storeo</h1>
+      <h1 onClick={() => navigate('/')} className='text-white text-xl font-light tracking-wider animate-bounce bg-black px-4 py-2 rounded-lg cursor-pointer'>Storeo</h1>
       <div className='hidden md:flex gap-4 transition-all duration-300'>
         <NavLink to="/" className={({ isActive }) => isActive ? activeLink : notActiveLink}>Home</NavLink>
         <NavLink to="/products" className={({ isActive }) => isActive ? activeLink : notActiveLink}>Products</NavLink>
