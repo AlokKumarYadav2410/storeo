@@ -4,12 +4,20 @@ import { ProductDataContext } from '../context/ProductContext'
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { containerVariants, itemVariants } from '../animations';
+import Loader from '../components/Loader';
 
 const Products = () => {
 
-  const { products } = useContext(ProductDataContext);
+  const { products, loading } = useContext(ProductDataContext);
 
-  console.log(products)
+  if (loading) {
+    return (
+      <div className="flex flex-col justify-center items-center h-screen">
+        <Loader />
+        {/* <h1 className="text-2xl font-bold">Loading products...</h1> */}
+      </div>
+    );
+  }
 
   return (
     <div className='p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 bg-[#A9A09A] max-w-500 m-auto'>

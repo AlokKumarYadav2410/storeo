@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router'
 import heroImg from '../assets/landing.jpg'
 import { motion } from 'motion/react'
+import { IoIosArrowRoundForward  } from "react-icons/io";
 import { containerVariants, itemVariants } from '../animations'
 
 const Home = () => {
@@ -40,9 +41,9 @@ const Home = () => {
         <motion.button
           variants={itemVariants}
           onClick={() => navigate('/products')}
-          className="px-6 py-3 bg-amber-200 text-black rounded-lg"
+          className="px-6 py-3 flex items-center gap-1 justify-center bg-amber-200 text-black rounded-lg hover:bg-black hover:text-amber-200 active:scale-95 transition-all duration-300 cursor-pointer"
         >
-          Go to Products
+          Go to Products <span><IoIosArrowRoundForward size={24} /></span>
         </motion.button>
       </motion.div>
 
