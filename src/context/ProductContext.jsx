@@ -1,31 +1,35 @@
 import React from 'react'
 import { useState } from 'react';
 import { createContext } from 'react'
-import axios from 'axios';
 import { useEffect } from 'react';
+import { fetchProducts } from '../api/productApi';
 
 export const ProductDataContext = createContext();
 
 const ProductContext = ({ children }) => {
 
-    const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const fetchProducts = async () => {
-        try {
-            const response = await axios.get('https://fakestoreapi.com/products');
-            setProducts(response.data);
-        }
-        catch (error) {
-            console.error("Error fetching products:", error);
-        }
+
+  const setData = async () => {
+    // fetchProducts().then(data => setProducts(data));
+    try {
+      const data = await fetchProducts();
+      setProducts(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
+  }
 
-    useEffect(() => {
-        fetchProducts();
-    }, []);
+  useEffect(() => {
+    setData();
+  }, []);
 
   return (
-    <ProductDataContext.Provider value={{ products }}>
+    <ProductDataContext.Provider value={{ products, loading }}>
       {children}
     </ProductDataContext.Provider>
   )
