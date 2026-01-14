@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
-/* :root {
+:root {
+  --primary: #f59e0b;      /* Amber - for accents and highlights */
+  --secondary: #1f2937;    /* Dark Gray - for text and contrast */
+  --accent: #0f172a;       /* Dark Slate - for backgrounds */
+
   --bg: #ffffff;
   --text: #111827;
-  --primary: #2563eb;
   --card: #f9fafb;
-} */
+  --text-secondary: #6b7280;
+}

@@ -28,7 +28,7 @@ const Home = () => {
           Welcome to{' '}
           <motion.span
             variants={itemVariants}
-            className="drop-shadow-[5px_6px_12px_rgba(0,0,0,0.4)]"
+            className="drop-shadow-[5px_6px_12px_rgba(0,0,0,0.4)] text-amber-200"
           >
             Storeo
           </motion.span>
