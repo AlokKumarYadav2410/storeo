@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { ProductDataContext } from '../context/ProductContext';
 import Loader from '../components/Loader';
 import { fetchProductById } from '../api/productApi';
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   // const { products, loading } = useContext(ProductDataContext);
 
   const [product, setProduct] = useState(null);
@@ -58,10 +59,13 @@ const ProductDetail = () => {
             <p>Rating Count: {product.rating.count}</p>
             <p>Rating: <span className={`font-semibold ${product.rating.rate > 4 ? 'text-green-600' : `${product.rating.rate > 2.5 ? 'text-yellow-600' : 'text-red-600'}`}`}>{product.rating.rate}</span></p>
           </div>
-          <div className='flex flex-wrap gap-4 items-center w-full'>
-            <p className='text-lg font-semibold'>Price: <span className='text-green-700'>${product.price}</span></p>
-            <button className='px-4 py-2 bg-green-600 hover:bg-green-500 active:scale-95 cursor-pointer text-white rounded-md transition-all duration-300'>Buy Now</button>
-            <button className='px-4 py-2 bg-green-600 hover:bg-green-500 active:scale-95 cursor-pointer self-end text-white rounded-md transition-all duration-300'>Add to Cart</button>
+          <p className='text-lg font-semibold'>Price: <span className='text-green-700'>${product.price}</span></p>
+          <div className='flex flex-wrap gap-4 items-center justify-between w-full'>
+            <div className='flex gap-4 flex-wrap'>
+              <button className='px-4 py-2 bg-green-600 hover:bg-green-500 active:scale-95 cursor-pointer text-white rounded-md transition-all duration-300'>Buy Now</button>
+              <button className='px-4 py-2 bg-green-600 hover:bg-green-500 active:scale-95 cursor-pointer self-end text-white rounded-md transition-all duration-300'>Add to Cart</button>
+            </div>
+            <button onClick={() => navigate('/products')} className='px-4 py-2 bg-black hover:bg-black/80 active:scale-95 cursor-pointer text-white rounded-md transition-all duration-300'>Back</button>
           </div>
         </div>
       </div>
