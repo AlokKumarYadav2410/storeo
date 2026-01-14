@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const Footer = () => {
   return (
-    <div className='w-full bg-[#A9A09A] border-t border-black/20 p-4 backdrop-blur-lg flex flex-col gap-2 justify-center items-center'>
+    <div className='w-full bg-[#A9A09A]/80 border-t border-black/20 p-4 backdrop-blur-lg flex flex-col gap-2 justify-center items-center'>
       <h2 className='text-sm sm:text-md font-light'>Made with ❤️ by Alok</h2>
       <div className='flex gap-4'>
         <Link to={"https://github.com/AlokKumarYadav2410"} target='_blank'>
