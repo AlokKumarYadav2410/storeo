@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'motion/react'
 import { FaLightbulb, FaRocket, FaPalette } from 'react-icons/fa'
 import { containerVariants, itemVariants } from '../animations'
+import { Link } from 'react-router'
 
 const About = () => {
   const features = [
@@ -136,14 +137,12 @@ const About = () => {
           <p className="text-lg text-black/80 mb-8 max-w-2xl mx-auto">
             Start discovering amazing products today and experience shopping like never before
           </p>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="/products"
-            className="inline-block px-8 py-3 bg-black text-amber-400 rounded-lg font-bold hover:bg-gray-900 transition-colors duration-300"
+          <Link
+            to="/products"
+            className="inline-block px-8 py-3 bg-black text-amber-400 rounded-lg font-bold hover:scale-105 active:scale-95 hover:bg-gray-900 transition-all duration-300"
           >
             Browse Products
-          </motion.a>
+          </Link>
         </motion.div>
       </motion.section>
     </div>
